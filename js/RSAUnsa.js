@@ -27,7 +27,7 @@ function RSA(){
 
 RSA.prototype.generateKeys = function(b, e){
 	var rng = new SecureRandom();
-	var qs = b>>1; //qs almacenara la mitad del numero de bits b
+	var qs = b>>1;
 	this.e = parseInt(e);
 	var ee = new BigInteger(e);
 	while (true)

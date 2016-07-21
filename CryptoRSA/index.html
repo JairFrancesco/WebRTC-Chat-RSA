@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>RSA Demo on Javascript</title>
+    <title>Encriptación con RSA</title>
   </head>
 
 <script language="JavaScript" type="text/javascript" src="jsbn.js"></script>
@@ -103,17 +103,17 @@ var showVariables = function(){
 </script>
 
   <body onLoad='do_init();'>
-    <h1>JavaScript RSA Cryptography Demo</h1>
+    <h1>Encryptacion con RSA</h1>
 
 <form name="rsatest" onSubmit='encriptar();return false;'>
 Plaintext (string):<br>
 <textarea name="plaintext" type="text" value="test" cols=70></textarea>
 <!--<input name="plaintext" type="text" value="test" size=400><br>-->
 <input type="button" value="encrypt" onClick="encriptar();"><p>
-Ciphertext (hex):<br>
+Ciphertext:<br>
 <textarea name="ciphertext" rows=7 cols=70></textarea><br>
 <input type="button" value="decrypt" onClick="desencriptar();"><p>
-Decrypted Plaintext (string):<br>
+Decrypted(string):<br>
 <input name="decrypted" type="text" size=400><p>
 <input type="button" value="show" onclick="showVariables();" name="show">
 Status:<br>
@@ -121,17 +121,17 @@ Status:<br>
 <hr>
 <h2>RSA private key</h2><p>
 &nbsp; <input type="button" value="Generate" onClick='generateRSA();'>
-bits = <input name="bits" type="text" value="1024" size=10>
+bits = <input name="bits" type="text" value="512" size=10>
 <p>
-Modulus (hex) (n: Modulo para las claves publica y privada):<br>
+Modulus (n: Modulo para las claves publica y privada):<br>
 <textarea name="n" type="text" rows=4 cols=70></textarea><p>
-Public exponent (hex, F4=0x10001): (e: exponente de la clave publica)<br>
+Public exponent (e: exponente de la clave publica)<br>
 <input name="e" type="text" value="3" size=20><p>
-Private exponent (hex): (d: exponente de la clave privada)<br>
+Private exponent (d: exponente de la clave privada)<br>
 <textarea name="d" type="text" rows=4 cols=70></textarea><p>
-P (hex):<br>
+P:<br>
 <textarea name="p" type="text" rows=2 cols=70></textarea><p>
-Q (hex):<br>
+Q:<br>
 <textarea name="q" type="text" rows=2 cols=70></textarea><p>
 </form>
   </body>

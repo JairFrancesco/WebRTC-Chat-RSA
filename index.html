@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="theme-color" content="#1d2935">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>SecretChat</title>
+		<title>EncryptedChat</title>
 		<meta name="Description" content="">
 		<link rel="stylesheet" href="css/chat.css">
 		<link rel="stylesheet" href="css/media.css">
@@ -22,7 +22,8 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="/" id="logo"><img src="images/logo.png" alt="SecretChat"></a></li>
+					<!--<li><a href="/" id="logo"><img src="images/logo.png" alt="SecretChat"></a></li>-->
+					<li><a href="">Encripted Chat</a></li>
 					<li><a href="http://vk.com/secretchat" target="_blank" rel="noopener noreferrer">Comunidad</a></li>
 					<li><a href="mailto:jairfrancesco@gmail.com" target="_blank" rel="noopener noreferrer">Apoyo</a></li>
 				</ul>
@@ -50,23 +51,15 @@
 					</form>
 				</div>
 			</div>
-			<div id="info">
-				<div class="column">
-					<h3>Con el Cifrado</h3>
-					<p>Los mensajes cifrados de forma segura a través de un RSA de 2048 bits directamente en su navegador. Incluso la NSA no sería capaz de acceder a ellos. Nuestra abierto el código fuente y se puede ver por sí mismo en este.</p>
-				</div>
-				<div class="column">
-					<h3>Sin la Conservación</h3>
-					<p>Utilizamos la conexión P2P, para que sus mensajes no se almacenan en cualquier lugar y se perderán de forma permanente después de la SecretChat cierre. Todo esto funciona bien en su navegador y que no envían los datos al servidor.</p>
-				</div>
-				<div class="column">
-					<h3>Sin Registro</h3>
-					<p>Puede comenzar a utilizar SecretChat en este momento, no necesitamos sus datos. Para un mayor anonimato usar el servicio a través de <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">TOR</a>.</p>
-				</div>
-			</div>
 			<div id="sourcecode">
-				<p>Cualquier persona puede utilizar el código fuente, y elevar proyecto sin esfuerzo <br> Todo lo que necesitas -. Un servidor web sencillo.</p>
-				<a href="" target="_blank" rel="noopener noreferrer">Fuente</a>
+				<p>Encriptar Archivos. (la clave privada esta en la caja de texto de arriba (Separada por comas)</p>
+				<input type="file" />
+				<br>
+				<button type="button" id="encryptFile" style="float: inherit; width: 100%">Encriptar!</button>
+				<button type="button" id="decryptFile" style="float: inherit; width: 100%">Desencriptar!</button>
+			</div>
+			<div id="outputEncrypted">
+				
 			</div>
 		</div>
 

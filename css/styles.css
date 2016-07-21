@@ -15,7 +15,7 @@
 }
 
 html, body {
-	background-color: #283848;
+	background-color: #070121;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 100%/1.5em;
 }
@@ -33,7 +33,7 @@ header, footer, nav {
 }
 
 header {
-	background-color: #2ab866;
+	background-color: #03040C;
 	font-size: 1.125em;
 	height: 4.375em;
 }
@@ -72,7 +72,7 @@ header nav ul li a:hover {
 }
 
 #connectbox {
-	background-color: #2ecc71;
+	background-color: #1C164E;
 	clear: both;
 	overflow: hidden;
 }
@@ -109,8 +109,26 @@ header nav ul li a:hover {
 	opacity: 1;
 }
 
+input[type=file]{
+	border: 1px solid #060B68;
+	border-radius: 1.5em;
+	color: #2ecc71;
+	cursor: pointer;
+	display: inline-block;
+	margin: 2em 1em;
+	padding: 1em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+input[type=file]:hover{
+	background-color: #0F158B;
+	color: #ffffff;
+}
+
 #connectbox input[type=submit] {
-	background-color: #2ab866;
+	background-color: #060B68;
 	border-radius: 1.5em;
 	color: #ffffff;
 	cursor: pointer;
@@ -120,19 +138,28 @@ header nav ul li a:hover {
 	width: 100%;
 }
 
+button{
+	border: 1px solid #060B68;
+	border-radius: 1.5em;
+	background-color: #060B68;
+	color: #ffffff;
+	cursor: pointer;
+	max-width: 150px;
+	display: inline-block;
+	margin: 2em 1em;
+	padding: 1em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+button:hover{
+	background-color: #0F158B;
+}
+
 #connectbox input[type=submit]:hover {
-	background-color: #27ad60;
-}
+	background-color: #0F158B;
 
-#info {
-	background-color: #2c3e50;
-	clear: both;
-	overflow: hidden;
-}
-
-#info .column:nth-child(2n) {
-	border-left: 0.063em solid #283848;
-	border-right: 0.063em solid #283848;
 }
 
 #info .column h3 {
@@ -147,15 +174,6 @@ header nav ul li a:hover {
 	color: #FCFCFC;
 	font-size: 1em;
 	margin: 0.625em 0.625em 1.25em 0.625em;
-}
-
-#info .column p a {
-	color: #2ecc71;
-}
-
-#info .column p a:hover {
-	opacity: 0.75;
-	text-decoration: none;
 }
 
 #sourcecode {

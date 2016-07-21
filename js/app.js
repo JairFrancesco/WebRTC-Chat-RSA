@@ -15,8 +15,8 @@ function notifyMe() {
   if (Notification.permission !== "granted")
     Notification.requestPermission();
   else {
-    var notification = new Notification('SecretChat', {
-      icon: 'images/notification.png',
+    var notification = new Notification('EncryptedChat', {
+      icon: 'images/encrypted.png',
       body: decryptedMsg.plaintext.replace(/([^>])\n/g, '$nbsp'),
     });
   }
@@ -42,6 +42,21 @@ function decode(str) {
 
 }
 
+//To download files
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
 function addZero(i) {
     if (i < 10) {
         i = "0" + i;
@@ -50,6 +65,8 @@ function addZero(i) {
 }
 
 // main
+var file=null;
+var encryptedFile="";
 var messageEncrypted = "";
 var publicExponent = "65537";
 var n;
@@ -122,7 +139,8 @@ function connect(c) {
       console.log("n:", n);
       console.log("d:", d);
       decryptedMsg = {};
-      decryptedMsg.plaintext = RSAChat.decrypt(dataBigInt);
+      //decryptedMsg.plaintext = RSAChat.decrypt(dataBigInt);
+      decryptedMsg.plaintext = data;
       console.log("Decrypted text");
       messages.append('<li><div class="message_block partner"><span class="date">' + (new Date()).getHours() + ':' + addZero(new Date().getMinutes()) + '</span> <span class="peer">Socio</span><div class="message">' + decryptedMsg.plaintext.replace(/([^>])\n/g, '$1<br/>') +
         '</div></div></li>');
@@ -179,9 +197,52 @@ $(document).ready(function() {
       c.close();
     });
   });
-  // Send a chat message to all active connections.
+
+  //Encrypt a File
+  $("#encryptFile").click(function(){
+    var reader = new FileReader();
+    reader.onload = function(){
+      var textEncrypted = reader.result;
+      var node = document.getElementById('outputEncrypted');
+      node.innerHTML = textEncrypted;
+      console.log(reader.result.substring(0,20));
+
+      var rsa = new RSA();
+      rsa.setPublicKey(n,publicExponent);
+      rsa.setPrivateKey(n,d);
+      var res = rsa.encrypt(textEncrypted);
+      textEncrypted = rsa.arrayEncrypted;
+      download("encrypted.txt",textEncrypted.join(","));
+    };
+    reader.readAsText(file);
+  });
+
+  $("#decryptFile").click(function(){
+    var reader = new FileReader();
+    reader.onload = function(){
+      var textEncrypted = reader.result;
+      var node = document.getElementById('outputEncrypted');
+      node.innerHTML = textEncrypted;
+      console.log(reader.result.substring(0,20));
+      var dataBigInt = textEncrypted.split(",");
+      for (var i = 0; i < dataBigInt.length; i++) {
+        dataBigInt[i] = new BigInteger(dataBigInt[i]);
+      }
+      RSAChat.setPrivateKey(n, d);
+      decryptedText = RSAChat.decrypt(dataBigInt);
+      download("decrypted.txt", decryptedText);
+    };
+    reader.readAsText(file);
+  });
+
+  //Handle change select file
+  $('input[type="file"]').change(function(e){
+    file = e.target.files[0];
+    alert('The file "' + file.name +  '" has been selected.');
+  });
 
 
+  // Send a chat message to all active connections
   $('#send').submit(function(e) {
     e.preventDefault();    // For each active connection, send the message.
     var msg = $('#msg').val();
